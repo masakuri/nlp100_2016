@@ -30,7 +30,7 @@ class Chunk:
 def load_cabocha(f):
     result_morph = []
     result_morphs = []
-    result_sentense = []
+    result_sentence = []
     result_chunk = []
     i = 0
     for line in f:
