@@ -23,12 +23,12 @@ class Morph:
 
 def load_cabocha(f):
     result_morph = []
-    result_sentense = []
+    result_sentence = []
     for line in f:
         if line.startswith("*"):
             continue
         elif line == "EOS\n":
-            result_sentense.append(result_morph)
+            result_sentence.append(result_morph)
             result_morph = []
             continue
         else:
@@ -39,7 +39,7 @@ def load_cabocha(f):
             pos = morph_list[0]
             pos1 = morph_list[1]
             result_morph.append(Morph(surface, base, pos, pos1))
-    return result_sentense
+    return result_sentence
 
 def print_list(li):
     for item in li:
