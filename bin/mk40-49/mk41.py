@@ -6,6 +6,7 @@
 """
 
 import sys
+from collections import defaultdict
 
 class Morph:
     def __init__(self, surface, base, pos, pos1):
@@ -25,52 +26,47 @@ class Chunk:
         self.srcs = srcs
 
     def __str__(self):
-        return self.dst + ":" + self.phrase + " -> " + self.srcs
+        return self.phrase + " -> " + str(self.dst)
 
 def load_cabocha(f):
-    result_morph = []
-    result_morphs = []
-    result_sentence = []
-    result_chunk = []
-    i = 0
+    list_of_sentence = []
+    list_of_morphs = []
+    list_of_chunk = []
+    src_tmp = None
+    dst_tmp = None
+    dst_srcs_dict = defaultdict(list)
     for line in f:
-        # 最初の*行判定
-        if line.startswith("*") and i == 0:
-            dst = line.split()[1]
-            srcs = line.split()[2].strip("D")
-            continue
-        # それ以降の*行判定
-        elif line.startswith("*") and i != 0:
-            result_chunk.append(Chunk(result_morph, dst, srcs))
-            result_morph = []
-            dst = line.split()[1]
-            srcs = line.split()[2].strip("D")
-            i += 1
-            continue
-        # 形態素の行判定
+        # *行処理
+        if line.startswith("*"):
+            if len(list_of_morphs) > 0: # 最初の行か否か判定（0の場合最初の行）
+                list_of_srcs = dst_srcs_dict[src_tmp]
+                list_of_chunk.append(Chunk(list_of_morphs, dst_tmp, list_of_srcs))
+                list_of_morphs = []
+            src_tmp = int(line.rstrip().split()[1])
+            dst_tmp = int(line.rstrip().split()[2].strip("D"))
+            dst_srcs_dict[dst_tmp].append(src_tmp)
+        # 形態素の行処理
         elif "\t" in line:
-            morph_split = line.split("\t")
-            morph_list = morph_split[1].split(",")
-            surface = morph_split[0]
-            base = morph_list[6]
-            pos = morph_list[0]
-            pos1 = morph_list[1]
-            result_morph.append(Morph(surface, base, pos, pos1))
-            i += 1
-        # EOS行判定
-        elif line == "EOS\n":
-            result_chunk.append(Chunk(result_morph, dst, srcs))
-            result_morphs.append(result_chunk)
-            result_morph = []
-            result_chunk = []
-            i = 0
-            continue
+            surface, rest = line.rstrip().split("\t")
+            list_of_rest = rest.split(",")
+            base = list_of_rest[6]
+            pos = list_of_rest[0]
+            pos1 = list_of_rest[1]
+            list_of_morphs.append(Morph(surface, base, pos, pos1))
+        # EOS行処理
+        elif "EOS" in line:
+            list_of_srcs = dst_srcs_dict[src_tmp]
+            list_of_chunk.append(Chunk(list_of_morphs, dst_tmp, list_of_srcs))
+            list_of_sentence.append(list_of_chunk)
+            list_of_morphs = []
+            list_of_chunk = []
+            dst_srcs_dict = defaultdict(list)
 
-    return result_morphs
+    return list_of_sentence
 
 def print_list(lst):
-    for item in lst:
-        print str(item)
+    for index, item in enumerate(lst):
+        print str(index) + ":" + str(item)
 
 if __name__ == '__main__':
     print_list(load_cabocha(sys.stdin)[7])
