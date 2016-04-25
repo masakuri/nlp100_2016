@@ -5,6 +5,7 @@
 出現頻度が高い10語とその出現頻度をグラフ（例えば棒グラフなど）で表示せよ．
 """
 
+import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 import mk36
