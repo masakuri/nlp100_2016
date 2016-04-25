@@ -5,6 +5,7 @@
 単語の出現頻度順位を横軸，その出現頻度を縦軸として，両対数グラフをプロットせよ．
 """
 
+import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 import mk36
