@@ -11,34 +11,33 @@ import mk41
 def dst_srcs(f):
     data = mk41.load_cabocha(f)
     dst_phrase_src_ls = list()
-    sentense_ls = list()
+    sentence_ls = list()
     all_ls = list()
     pattern = re.compile(r"。|、|\　")
 
-    # 0:吾輩は -> 5 を [0, 我輩は, 5]とするリスト作成
-    for sentense in data:
-        for line in sentense:
-            dst_phrase_src_ls.append(line.dst)
+    # [我輩は, 5]とするリスト作成
+    for sentence in data:
+        for line in sentence:
             dst_phrase_src_ls.append(pattern.sub("", line.phrase))  # 句読点等削除
-            dst_phrase_src_ls.append(line.srcs)
-            sentense_ls.append(dst_phrase_src_ls)
+            dst_phrase_src_ls.append(line.dst)
+            sentence_ls.append(dst_phrase_src_ls)
             dst_phrase_src_ls = list()
-        all_ls.append(sentense_ls)
-        sentense_ls = list()
+        all_ls.append(sentence_ls)
+        sentence_ls = list()
 
     return all_ls
 
 if __name__ == '__main__':
     lst = dst_srcs(sys.stdin)
-    for sentense in lst:
-        for index in sentense:
-            if index[2] == "-1":
+    for sentence in lst:
+        for index in sentence:
+            if index[1] == -1:
                 break
             else:
-                if index[1] == "":
+                if index[0] == "":
                     continue
                 else:
-                    print index[1]+ "\t" + sentense[int(index[2])][1]
+                    print index[0] + "\t" + sentence[index[1]][0]
 
 """
 $ python mk42.py < neko.txt.cabocha
