@@ -45,8 +45,7 @@ for sentence in data:
                 if joshi:
                     dst_ls.append(morph.base)
             if len(dst_ls) > 0:
-                sortedlist = sorted(dst_ls)
-                print pattern.sub("", verb + "\t" + " ".join(sortedlist))
+                print pattern.sub("", verb + "\t" + " ".join(dst_ls))
 
 """
 $ python mk45.py < neko.txt.cabocha > result45.txt
