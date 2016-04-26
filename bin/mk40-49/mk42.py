@@ -10,7 +10,7 @@ import mk41
 
 def dst_srcs(f):
     data = mk41.load_cabocha(f)
-    dst_phrase_src_ls = list()
+    phrase_dst_ls = list()
     sentence_ls = list()
     all_ls = list()
     pattern = re.compile(r"。|、|\　")
@@ -18,10 +18,10 @@ def dst_srcs(f):
     # [我輩は, 5]とするリスト作成
     for sentence in data:
         for line in sentence:
-            dst_phrase_src_ls.append(pattern.sub("", line.phrase))  # 句読点等削除
-            dst_phrase_src_ls.append(line.dst)
-            sentence_ls.append(dst_phrase_src_ls)
-            dst_phrase_src_ls = list()
+            phrase_dst_ls.append(pattern.sub("", line.phrase))  # 句読点等削除
+            phrase_dst_ls.append(line.dst)
+            sentence_ls.append(phrase_dst_ls)
+            phrase_dst_ls = list()
         all_ls.append(sentence_ls)
         sentence_ls = list()
 
