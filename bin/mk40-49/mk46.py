@@ -38,7 +38,7 @@ for sentence in data:
                 print pattern.sub("", verb + "\t" + " ".join(dst_ls) + "\t" + " ".join(kou_ls)) # mk45からの変更行
 
 """
-$ python mk46.py < neko.txt.cabocha | less
+$ python mk46.py < neko.txt.cabocha
 生れる  で      どこで
 つく    か が   生れたか 見当が
 泣く    で      所で
