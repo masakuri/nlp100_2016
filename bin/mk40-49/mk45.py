@@ -37,13 +37,13 @@ for sentence in data:
 
         if verb != "" and len(chunk.srcs) > 0:
             for src_index in chunk.srcs:
-                src_chunk = sentence[int(src_index)]
-                joshi = None
+                src_chunk = sentence[src_index]
+                joshi = ""
                 for morph in src_chunk.morphs:
                     if morph.pos == "助詞":
                         joshi = morph.base
-                if joshi:
-                    dst_ls.append(morph.base)
+                if joshi != "":
+                    dst_ls.append(joshi)
             if len(dst_ls) > 0:
                 print pattern.sub("", verb + "\t" + " ".join(dst_ls))
 
