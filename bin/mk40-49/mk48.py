@@ -33,7 +33,7 @@ for sentence in data:
                 pass_ls.append(sentence[dst_pass].phrase)
                 dst_pass = sentence[dst_pass].dst
             if len(pass_ls) > 1:
-                print pattern.sub("", " -> ".join(pass_ls).rstrip(" -> "))
+                print pattern.sub("", " -> ".join(pass_ls))
             noun_flag = 0
             pass_ls = list()
 
