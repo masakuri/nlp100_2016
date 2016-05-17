@@ -6,7 +6,7 @@ Stanford Core NLPの係り受け解析の結果（collapsed-dependencies）を�
 """
 
 from xml.etree.ElementTree import *
-import sys, re
+import sys
 import pydot
 
 tree = parse(sys.stdin)
