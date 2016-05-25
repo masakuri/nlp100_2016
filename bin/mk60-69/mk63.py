@@ -54,4 +54,8 @@ tag : britannique, count : 1
 tag : rock and indie, count : 1
 tag : england, count : 1
 tag : manchester, count : 1
+$ python mk63.py
+create database (input 0) or seach tags (input 1) ? : 1
+input artist name : Masakuri
+None
 """
