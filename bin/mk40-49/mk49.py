@@ -57,9 +57,26 @@ def main():
             print " -> ".join(path_ij_surfaces)
 
         else:
-            """
-            ?????
-            """
+            node_k_chunk = None
+            h = -1
+            while(node_i["path"][h] == node_j["path"][h]):
+                node_k_chunk = node_i["path"][h]
+                h = h - 1
+
+            if node_k_chunk != None:
+                index_k_in_i = node_i["path"].index(node_k_chunk)
+                path_ik = node_i["path"][0:index_k_in_i]
+                path_ik_surfaces = [re.sub(pattern, "", chunk.phrase) for chunk in path_ik]
+                path_ik_surfaces[0] = replace_noun_phrase_in_chunk(path_ik[0], "X")
+
+                index_k_in_j = node_j["path"].index(node_k_chunk)
+                path_jk = node_j["path"][0:index_k_in_j]
+                path_jk_surfaces = [re.sub(pattern, "", chunk.phrase) for chunk in path_jk]
+                path_jk_surfaces[0] = replace_noun_phrase_in_chunk(path_jk[0], "Y")
+
+                print " -> ".join(path_ik_surfaces) \
+                    + " | " + " -> ".join(path_jk_surfaces) \
+                    + " | " + re.sub(pattern, "", node_k_chunk.phrase)
 
 # chunk内の名詞句をnew_stringに置換して文字列として返す
 def replace_noun_phrase_in_chunk(chunk, new_string):
@@ -75,3 +92,26 @@ def replace_noun_phrase_in_chunk(chunk, new_string):
 
 if __name__ == '__main__':
     main()
+
+"""
+$ python mk49.py < neko.txt.cabocha
+Xは -> Y
+　Xで -> 生れたか | Yが | つかぬ
+Xでも -> 薄暗い -> Y
+Xでも -> 薄暗い -> 所で | Y | 泣いて
+Xでも -> 薄暗い -> 所で -> 泣いて | Yだけは | 記憶している
+Xでも -> 薄暗い -> 所で -> 泣いて -> Y
+Xで | Y | 泣いて
+Xで -> 泣いて | Yだけは | 記憶している
+Xで -> 泣いて -> Y
+X -> 泣いて | Yだけは | 記憶している
+X -> 泣いて -> Y
+Xだけは -> Y
+Xは | Yで -> 始めて -> 人間という -> ものを | 見た
+Xは | Yという -> ものを | 見た
+Xは | Yを | 見た
+Xで -> 始めて -> Y
+Xで -> 始めて -> 人間という -> Y
+Xという -> Y
+...
+"""
