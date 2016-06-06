@@ -18,24 +18,24 @@ import sys, re
 
 data = mk41.load_cabocha(sys.stdin)
 pattern = re.compile(r"。|、|「|」|\*|　")
-pass_ls = list()
+path_ls = list()
 noun_flag = 0
 for sentence in data:
     for chunk in sentence:
         for morph in chunk.morphs:
-            if morph.pos == "名詞":
+            if morph.pos == "名詞":   # 文節chunkに名詞があるか
                 noun_flag = 1
                 break
-        if noun_flag == 1:
-            pass_ls.append(chunk.phrase)
-            dst_pass = chunk.dst
-            while(dst_pass != -1):
-                pass_ls.append(sentence[dst_pass].phrase)
-                dst_pass = sentence[dst_pass].dst
-            if len(pass_ls) > 1:
-                print pattern.sub("", " -> ".join(pass_ls))
+        if noun_flag == 1:  # 名詞があったら
+            path_ls.append(chunk.phrase)    # 係り元のchunkをpath_lsリストに追加
+            dst_path = chunk.dst
+            while(dst_path != -1):  # 係り先がある限り
+                path_ls.append(sentence[dst_path].phrase) # 係り先のchunkをpath_lsリストに追加
+                dst_path = sentence[dst_path].dst
+            if len(path_ls) > 1:
+                print pattern.sub("", " -> ".join(path_ls))
             noun_flag = 0
-            pass_ls = list()
+            path_ls = list()
 
 """
 $ python mk48.py < neko.txt.cabocha
