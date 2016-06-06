@@ -31,23 +31,23 @@ def main():
         for chunk in sentence:
             noun_flag = 0
             for morph in chunk.morphs:
-                if morph.pos == "名詞":
+                if morph.pos == "名詞":   # 文節chunkに名詞があるか
                     noun_flag = 1
                     break
-            if noun_flag == 1:
-                a_path = list()
-                a_path.append(chunk)
+            if noun_flag == 1:  # 名詞があったら
+                all_path = list()
+                all_path.append(chunk)    # 係り元のchunkをall_pathリストに追加
                 # pass_ls.append(chunk.phrase)
                 dst_path = chunk.dst
-                while(dst_path != -1):
+                while(dst_path != -1):  # 係り先がある限り
                     dst_chunk = sentence[dst_path]
-                    a_path.append(dst_chunk)
+                    all_path.append(dst_chunk)  # 係り先のchunkをall_pathリストに追加
                     dst_path = dst_chunk.dst
-                path_ls.append(a_path)
+                path_ls.append(all_path)
 
     list_of_nodes = [{"chunk": l[0], "path": l} for l in path_ls]
     for node_i, node_j in combinations(list_of_nodes, 2):
-        if node_j["chunk"] in node_i["path"]:
+        if node_j["chunk"] in node_i["path"]:   # node_iから構文木の根までのパスにnode_jが存在する場合
             index_j_in_i = node_i["path"].index(node_j["chunk"])
             path_ij = node_i["path"][0:index_j_in_i + 1]
             path_ij_surfaces = [chunk.phrase for chunk in path_ij]
@@ -56,7 +56,7 @@ def main():
 
             print " -> ".join(path_ij_surfaces)
 
-        else:
+        else:   # node_iと文節node_jから構文木の根までのパス上で共通のnode_kで交わる場合
             node_k_chunk = None
             h = -1
             while(node_i["path"][h] == node_j["path"][h]):
@@ -64,11 +64,13 @@ def main():
                 h = h - 1
 
             if node_k_chunk != None:
+                # node_iからnode_kまでのパスを取り出す
                 index_k_in_i = node_i["path"].index(node_k_chunk)
                 path_ik = node_i["path"][0:index_k_in_i]
                 path_ik_surfaces = [re.sub(pattern, "", chunk.phrase) for chunk in path_ik]
                 path_ik_surfaces[0] = replace_noun_phrase_in_chunk(path_ik[0], "X")
-
+                
+                # node_jからnode_kまでのパスを取り出す
                 index_k_in_j = node_j["path"].index(node_k_chunk)
                 path_jk = node_j["path"][0:index_k_in_j]
                 path_jk_surfaces = [re.sub(pattern, "", chunk.phrase) for chunk in path_jk]
