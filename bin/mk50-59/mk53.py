@@ -6,7 +6,7 @@ Stanford Core NLPを用い，入力テキストの解析結果をXML形式で得
 """
 
 """
-(stanford-corenlp-full-2015-12-09/ディレクトリ内で)
+(/usr/local/lib/stanford-corenlp-full-2015-12-09/ディレクトリ内で)
 $ java -cp "*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file nlp.txt
 -> nlp.txt.outのXMLファイル
 """
