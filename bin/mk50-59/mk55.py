@@ -5,10 +5,10 @@
 入力文中の人名をすべて抜き出せ．
 """
 
-from xml.etree.ElementTree import *
+import xml.etree.ElementTree as ET
 import sys
 
-tree = parse(sys.stdin)
+tree = ET.parse(sys.stdin)
 elem = tree.getroot()
 for e in elem.getiterator("token"):
     if e.find("NER").text == "PERSON":

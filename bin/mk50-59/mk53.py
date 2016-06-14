@@ -11,10 +11,10 @@ $ java -cp "*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators toke
 -> nlp.txt.outのXMLファイル
 """
 
-from xml.etree.ElementTree import *
+import xml.etree.ElementTree as ET
 import sys
 
-tree = parse(sys.stdin)
+tree = ET.parse(sys.stdin)
 elem = tree.getroot()
 for e in elem.findall(".//word"):
     print e.text

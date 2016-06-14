@@ -5,10 +5,10 @@
 Stanford Core NLPの解析結果XMLを読み込み，単語，レンマ，品詞をタブ区切り形式で出力せよ．
 """
 
-from xml.etree.ElementTree import *
+import xml.etree.ElementTree as ET
 import sys
 
-tree = parse(sys.stdin)
+tree = ET.parse(sys.stdin)
 elem = tree.getroot()
 for w, l, p in zip(elem.findall(".//word"), elem.findall(".//lemma"), elem.findall(".//POS")):
     print w.text + "\t" + l.text + "\t" + p.text

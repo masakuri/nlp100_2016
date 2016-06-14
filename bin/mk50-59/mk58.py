@@ -9,10 +9,10 @@ Stanford Core NLPの係り受け解析の結果（collapsed-dependencies）に�
 ・目的語: 述語からdobj関係にある子（dependent）
 """
 
-from xml.etree.ElementTree import *
+import xml.etree.ElementTree as ET
 import sys
 
-tree = parse(sys.stdin)
+tree = ET.parse(sys.stdin)
 elem = tree.getroot()
 collapsed_dependencies = elem.findall(".//dependencies[@type='collapsed-dependencies']")
 nsub_dob_ls = list()
