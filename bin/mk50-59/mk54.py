@@ -11,7 +11,7 @@ import sys
 tree = ET.parse(sys.stdin)
 elem = tree.getroot()
 for w, l, p in zip(elem.findall(".//word"), elem.findall(".//lemma"), elem.findall(".//POS")):
-    print w.text + "\t" + l.text + "\t" + p.text
+    print "{}\t{}\t{}".format(w.text, l.text, p.text)
 
 """
 $ python mk54.py < nlp.txt.out
