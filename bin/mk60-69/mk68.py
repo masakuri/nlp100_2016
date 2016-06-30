@@ -24,9 +24,6 @@ for artist in sorted_dance_rate_artist:
     else:
         break
 
-# for artist in collection.find({"tags.value": "dance"}).sort("rating.count", -1).limit(10):
-#     print artist["name"].encode('utf_8'), artist["rating"]["count"]
-
 """
 $ python mk68.py
 Madonna 26
