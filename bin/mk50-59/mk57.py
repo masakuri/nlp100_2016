@@ -39,10 +39,11 @@ for dependency in collapsed_dependencies:
     sentence_ls.append(node_ls)
     node_ls = list()
 
-g=pydot.graph_from_edges(sentence_ls[1], directed=True)
+g=pydot.graph_from_edges(sentence_ls[11], directed=True)
 g.write_jpeg('result57.jpg', prog='dot')
 
 """
 $ python mk57.py < nlp.txt.out
 http://www.cl.ecei.tohoku.ac.jp/~masakuri/nlp100/result57
+一つのノードに2つ以上のエッジが入ってきている（おかしい）
 """
