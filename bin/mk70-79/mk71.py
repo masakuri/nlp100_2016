@@ -10,57 +10,17 @@
 http://www.textfixer.com/resources/common-english-words.txt
 """
 
+import sys
+
 def is_stop_word(word, stop_list):
     return word in stop_list
-
-def main(text, stop_list):
-    word_ls = text.split()
-    for word in word_ls:
-        print "{}\t{}".format(word, is_stop_word(word, stop_list))
 
 if __name__ == '__main__':
     with open("stop_word.txt") as f:
         stop_list = f.read().strip().split(",")
-        main("it's so laddish and juvenile , only teenage boys could possibly find it funny .", stop_list)
-        print "********************"
-        main("if you sometimes like to go to the movies to have fun , wasabi is a good place to start .", stop_list)
+        print is_stop_word(sys.argv[1], stop_list)
 
 """
-$ python mk71.py
-it's	False
-so	True
-laddish	False
-and	True
-juvenile	False
-,	False
-only	True
-teenage	False
-boys	False
-could	True
-possibly	False
-find	False
-it	True
-funny	False
-.	False
-if	True
-you	True
-sometimes	False
-like	True
-to	True
-go	False
-to	True
-the	True
-movies	False
-to	True
-have	True
-fun	False
-,	False
-wasabi	False
-is	True
-a	True
-good	False
-place	False
-to	True
-start	False
-.	False
+$ python mk71.py can
+True
 """
