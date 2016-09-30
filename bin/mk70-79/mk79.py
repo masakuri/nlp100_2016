@@ -34,8 +34,6 @@ for p in np.arange(0.05, 1.0, 0.05):
     precision_list.append(float(true_positive) / float(true_positive + false_positive))
     recall_list.append(float(true_positive) / float(true_positive + false_negative))
 
-print precision_list
-print recall_list
 plt.xlim(0.0, 1.1)
 plt.ylim(0.0, 1.1)
 plt.plot(precision_list, recall_list)

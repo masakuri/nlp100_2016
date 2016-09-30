@@ -44,23 +44,23 @@ print "F1 : " + str(f1)
 
 """
 $ python mk77.py < result_base.txt
-accuracy : 0.927593322078
-precision : 0.930175504812
-recall : 0.924592009004
-F1 : 0.927375352775
+accuracy : 0.923560307635
+precision : 0.926359516616
+recall : 0.920277621459
+F1 : 0.923308553684
 $ python mk77.py < result_all.txt
-accuracy : 0.996623522791
-precision : 0.997369904189
-recall : 0.995873194523
-F1 : 0.996620987423
+accuracy : 0.996811104858
+precision : 0.997931942094
+recall : 0.995685612455
+F1 : 0.996807511737
 """
 
 # コマンドラインで
 """
 $ cat baseline.txt | classias-tag -m baseline.model -qt
-Accuracy: 0.9276 (9890/10662)
-Micro P, R, F1: 0.9302 (4929/5299), 0.9246 (4929/5331), 0.9274
+Accuracy: 0.9236 (9847/10662)
+Micro P, R, F1: 0.9264 (4906/5296), 0.9203 (4906/5331), 0.9233
 $ cat train.txt | classias-tag -m train.model -qt
-Accuracy: 0.9966 (10626/10662)
-Micro P, R, F1: 0.9974 (5309/5323), 0.9959 (5309/5331), 0.9966
+Accuracy: 0.9968 (10628/10662)
+Micro P, R, F1: 0.9979 (5308/5319), 0.9957 (5308/5331), 0.9968
 """

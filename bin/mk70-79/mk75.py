@@ -7,50 +7,48 @@
 
 """
 $ cat baseline.model | grep -v '@classias' | sort -g -r | head -10
-1.5613 	engross
-1.53987	refresh
-1.41034	unexpect
-1.28457	remark
-1.28194	beauti
-1.27526	cinema
-1.22712	delight
-1.18741	solid
-1.17976	examin
-1.16101	enjoy
+1.34669	remark
+1.28551	beauti
+1.21083	delight
+1.15719	enjoy
+1.02745	rich
+1.01796	nuanc
+1.01322	hilari
+0.999848       	strength
+0.987994       	rivet
+0.978798       	entertain
 
 $ cat train.model | grep -v "@classias" | sort -g -r | head -10
-1.39418	beauti
-1.26501	engross
-1.24092	refresh
-1.19363	delight
-1.18997	remark
-1.16708	enjoy
-1.13665	unexpect
-1.08496	entertain
-1.08099	cinema
-1.06516	solid
+1.38847	beauti
+1.21577	remark
+1.18351	delight
+1.16583	enjoy
+1.04952	entertain
+0.990916       	hilari
+0.979227       	cultur
+0.944894       	power
+0.924283       	move
+0.907597       	portrait
 
 $ cat baseline.model | grep -v '@classias' | sort -g | head -10
--1.88139       	bore
--1.76737       	dull
--1.60592       	fail
--1.49098       	wast
--1.48115       	worst
--1.4396	mediocr
--1.33724       	bad
--1.33572       	flat
--1.30285       	routin
--1.29166       	appar
+-1.86882       	bore
+-1.5924	fail
+-1.41942       	bad
+-1.29345       	routin
+-1.26589       	lack
+-1.17431       	disguis
+-1.04565       	intent
+-1.01845       	alreadi
+-1.00528       	video
 
 $ cat train.model | grep -v '@classias' | sort -g | head -10
--1.59529       	bore
--1.57854       	dull
--1.4112	bad
--1.39151       	worst
--1.33474       	lack
--1.30862       	fail
--1.21108       	mediocr
--1.20919       	wast
--1.14107       	flat
--1.06768       	plod
+-1.59522       	bore
+-1.49475       	bad
+-1.3192	lack
+-1.29905       	fail
+-0.978067      	routin
+-0.869421      	titl
+-0.851186      	thin
+-0.843646      	doesn't
+-0.840025      	disguis
 """

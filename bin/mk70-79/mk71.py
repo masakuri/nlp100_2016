@@ -23,4 +23,8 @@ if __name__ == '__main__':
 """
 $ python mk71.py can
 True
+$ python mk71.py able
+True
+$ python mk71.py yours
+False
 """

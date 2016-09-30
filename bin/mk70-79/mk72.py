@@ -34,7 +34,7 @@ if __name__ == '__main__':
     p.add_argument("-f", "--feature", dest = "feature", help = "input a or b, a : all features, b : baseline")
     args = p.parse_args()
 
-    with codecs.open("stop_word.txt", encoding="latin1") as f:  # 文字化けへの対処
+    with open("stop_word.txt") as f:
         feature_list = list()
         stop_list = f.read().strip().split(",")
         text = sys.stdin

@@ -7,4 +7,5 @@
 
 """
 classias-train -tb -a lbfgs.logistic -m baseline.model baseline.txt
+classias-train -tb -a lbfgs.logistic -m train.model train.txt
 """

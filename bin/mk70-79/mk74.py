@@ -45,8 +45,12 @@ if __name__ == '__main__':
     print classfy(text, model)
 
 """
+$ python mk74.py "the movie is the worst one" < baseline.model
+-1     	0.91398984577
 $ python mk74.py "the movie is the worst one" < train.model
--1     	0.859428079899
+-1     	0.895386325565
+$ python mk74.py "the movie is the best one" < baseline.model
+-1     	0.533676213591
 $ python mk74.py "the movie is the best one" < train.model
-+1     	0.391207327902
++1     	0.487546076434
 """

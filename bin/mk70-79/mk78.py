@@ -8,135 +8,42 @@
 # ベースライン
 """
 $ classias-train -tb -g5 -x baseline.txt
-Classias 1.1.1 trainer Copyright (c) 2008,2009 Naoaki Okazaki
-
-Task type: binary
-Training algorithm: lbfgs.logistic
-Instance shuffle: false
-Bias feature value: 1
-Model file:
-Instance splitting: 5
-Holdout group: -1
-Cross validation: true
-Attribute filter:
-Start time: 2016-09-01T15:14:04Z
-
-Reading the data set from 1 files
-- 1: baseline.txt
-Number of instances: 10662
-Number of groups: 5
-Number of attributes: 15711
-Number of labels: 2
-Number of features: 15711
-Seconds required: 0.102299
-
-===== Cross validation (1/5) =====
-Binary logistic regression using L-BFGS
-c1: 0
-c2: 1
-num_memories: 6
-epsilon: 1e-05
-stop: 10
-delta: 1e-05
-max_iterations: 2147483647
-linesearch: MoreThuente
-max_linesearch: 20
-lbfgs.regularization_start: 1
-
-***** Iteration #1 *****
-Loss: 5838.26
-Feature L2-norm: 0.369064
-Error norm: 904.428
-Active features: 12924 / 15711
-Line search trials: 2
-Line search step: 0.000917801
-Seconds required for this iteration: 0.008192
-Accuracy: 0.5968 (1273/2133)
-Micro P, R, F1: 0.5621 (959/1706), 0.8946 (959/1072), 0.6904
-
 ...
-
-***** Iteration #94 *****
-Loss: 3264.38
-Feature L2-norm: 27.8917
-Error norm: 1.32396
-Active features: 14077 / 15711
-Line search trials: 1
-Line search step: 1
-Seconds required for this iteration: 0.003605
-Accuracy: 0.7570 (1614/2132)
-Micro P, R, F1: 0.7539 (821/1089), 0.7666 (821/1071), 0.7602
-
-L-BFGS terminated with the stopping criteria
-Seconds required: 0.36471
-
-Finish time: 2016-09-01T15:15:04Z
+===== Cross validation (1/5) =====
+Accuracy: 0.7379 (1574/2133)
+Micro P, R, F1: 0.7502 (799/1065), 0.7317 (799/1092), 0.7408
+===== Cross validation (2/5) =====
+Accuracy: 0.7670 (1636/2133)
+Micro P, R, F1: 0.7644 (808/1057), 0.7652 (808/1056), 0.7648
+===== Cross validation (3/5) =====
+Accuracy: 0.7664 (1634/2132)
+Micro P, R, F1: 0.7682 (802/1044), 0.7580 (802/1058), 0.7631
+===== Cross validation (4/5) =====
+Accuracy: 0.7598 (1620/2132)
+Micro P, R, F1: 0.7412 (779/1051), 0.7645 (779/1019), 0.7527
+===== Cross validation (5/5) =====
+Accuracy: 0.7425 (1583/2132)
+Micro P, R, F1: 0.7581 (818/1079), 0.7396 (818/1106), 0.7487
 """
+# ここらから求めましょう
 
 # 全素性（ベースライン + 2-gram）
 """
 $ classias-train -tb -g5 -x train.txt
-Classias 1.1.1 trainer Copyright (c) 2008,2009 Naoaki Okazaki
-
-Task type: binary
-Training algorithm: lbfgs.logistic
-Instance shuffle: false
-Bias feature value: 1
-Model file:
-Instance splitting: 5
-Holdout group: -1
-Cross validation: true
-Attribute filter:
-Start time: 2016-09-01T15:17:23Z
-
-Reading the data set from 1 files
-- 1: train.txt
-Number of instances: 10662
-Number of groups: 5
-Number of attributes: 109459
-Number of labels: 2
-Number of features: 109459
-Seconds required: 0.281201
-
 ===== Cross validation (1/5) =====
-Binary logistic regression using L-BFGS
-c1: 0
-c2: 1
-num_memories: 6
-epsilon: 1e-05
-stop: 10
-delta: 1e-05
-max_iterations: 2147483647
-linesearch: MoreThuente
-max_linesearch: 20
-lbfgs.regularization_start: 1
-
-***** Iteration #1 *****
-Loss: 5807.15
-Feature L2-norm: 0.480917
-Error norm: 1119.85
-Active features: 87609 / 109459
-Line search trials: 2
-Line search step: 0.00108415
-Seconds required for this iteration: 0.026852
-Accuracy: 0.5926 (1264/2133)
-Micro P, R, F1: 0.5584 (971/1739), 0.9058 (971/1072), 0.6909
-
-...
-
-***** Iteration #89 *****
-Loss: 2319.24
-Feature L2-norm: 30.5637
-Error norm: 0.70611
-Active features: 91152 / 109459
-Line search trials: 1
-Line search step: 1
-Seconds required for this iteration: 0.016465
-Accuracy: 0.7580 (1616/2132)
-Micro P, R, F1: 0.7562 (819/1083), 0.7647 (819/1071), 0.7604
-
-L-BFGS terminated with the stopping criteria
-Seconds required: 1.49587
-
-Finish time: 2016-09-01T15:16:20Z
+Accuracy: 0.7426 (1584/2133)
+Micro P, R, F1: 0.7588 (796/1049), 0.7289 (796/1092), 0.7436
+===== Cross validation (2/5) =====
+Accuracy: 0.7778 (1659/2133)
+Micro P, R, F1: 0.7761 (818/1054), 0.7746 (818/1056), 0.7754
+===== Cross validation (3/5) =====
+Accuracy: 0.7749 (1652/2132)
+Micro P, R, F1: 0.7790 (807/1036), 0.7628 (807/1058), 0.7708
+===== Cross validation (4/5) =====
+Accuracy: 0.7735 (1649/2132)
+Micro P, R, F1: 0.7514 (801/1066), 0.7861 (801/1019), 0.7683
+===== Cross validation (5/5) =====
+Accuracy: 0.7481 (1595/2132)
+Micro P, R, F1: 0.7637 (824/1079), 0.7450 (824/1106), 0.7542
 """
+# ここらから求めましょう
