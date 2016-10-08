@@ -14,7 +14,7 @@ import numpy as np
 word1 = sys.argv[1]
 word2 = sys.argv[2]
 word3 = sys.argv[3]
-word_vectors = joblib.load("word_vectors.dump")
+word_vectors = joblib.load(sys.argv[4])
 word_dic = pickle.load(sys.stdin)
 word1 = word1.strip(".,!?;:\(\)\[\]\'\"").replace(" ", "_")
 word2 = word2.strip(".,!?;:\(\)\[\]\'\"").replace(" ", "_")
@@ -41,33 +41,33 @@ for word, cos_sim in cos_sim_top10:
     print "{} : {}".format(word, cos_sim)
 
 """
-$ time python mk89.py "Spain" "Madrid" "Athens" < word_dic.pkl
-Spain : 0.91053524173
-Britain : 0.834713083249
-Italy : 0.822808555325
-Russia : 0.797953058852
-Philadelphia : 0.796133878008
-Scotland : 0.793301192083
-Sweden : 0.790557778813
-camp : 0.785923822673
-both : 0.783548456442
-New_Zealand : 0.778622245078
+$ time python mk89.py "Spain" "Madrid" "Athens" "word_vectors.dump" < word_dic.pkl
+Spain : 0.910455679946
+Britain : 0.834547429776
+Italy : 0.822756249557
+Philadelphia : 0.800310605908
+Russia : 0.799624596453
+Scotland : 0.794285085503
+Sweden : 0.790721696227
+camp : 0.786801412759
+both : 0.784217302251
+collected : 0.778772531185
 python mk89.py "Spain" "Madrid" "Athens" < word_dic.pkl  1.00s user 2.01s system 63% cpu 4.764 total
 メモリ：400Mくらい？
 """
 # うまくいってない
 
 """
-$ python mk89.py "King" "man" "woman" < word_dic.pkl
-King : 0.868296059242
-woman : 0.838840377542
-John : 0.82329138478
-Lord : 0.806632424791
-son : 0.806389415482
-George : 0.802174287705
-Henry : 0.799067156864
-Prince : 0.795311373296
-David : 0.794293994691
-William : 0.793732857408
+$ python mk89.py "King" "man" "woman" "word_vectors.dump" < word_dic.pkl
+King : 0.869005629632
+woman : 0.837241396459
+John : 0.821484842444
+Lord : 0.806529645753
+George : 0.806376869755
+son : 0.806242872417
+Henry : 0.796897808904
+David : 0.794703102979
+Prince : 0.793249795106
+Richard : 0.792252611439
 """
 # うーん

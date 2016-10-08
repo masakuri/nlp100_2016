@@ -10,7 +10,7 @@ import numpy as np
 
 target_word = sys.argv[1]
 search_word = sys.argv[2]
-word_vectors = joblib.load("word_vectors.dump")
+word_vectors = joblib.load(sys.argv[3])
 word_dic = pickle.load(sys.stdin)
 target_word = target_word.strip(".,!?;:\(\)\[\]\'\"").replace(" ", "_") # United States ->  United_States
 search_word = search_word.strip(".,!?;:\(\)\[\]\'\"").replace(" ", "_") # U.S. -> U.S
@@ -24,8 +24,8 @@ except:
     print "Error : no such target word or search word."
 
 """
-$ time python mk87.py "United States" "U.S." < word_dic.pkl
-0.911171578711
+$ time python mk87.py "United States" "U.S." "word_vectors.dump" < word_dic.pkl
+0.910801099808
 python mk87.py "United States" "U.S." < word_dic.pkl  0.36s user 1.69s system 73% cpu 2.773 total
 メモリ：150Mくらい？
 """

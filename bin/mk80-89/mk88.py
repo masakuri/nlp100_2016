@@ -9,7 +9,7 @@ import cPickle as pickle
 import numpy as np
 
 target_word = sys.argv[1]
-word_vectors = joblib.load("word_vectors.dump")
+word_vectors = joblib.load(sys.argv[2])
 word_dic = pickle.load(sys.stdin)
 target_word = target_word.strip(".,!?;:\(\)\[\]\'\"").replace(" ", "_")
 cos_sim_top10 = list()
@@ -31,29 +31,29 @@ for word, cos_sim in cos_sim_top10:
     print "{} : {}".format(word, cos_sim)
 
 """
-$ time python mk88.py "England" < word_dic.pkl
-England: 1.0
-France : 0.889762495393
-Australia : 0.886379690346
-Germany : 0.880790155016
-London : 0.872781188614
-India : 0.872657948677
-West : 0.863139159344
-America : 0.862645209855
-home : 0.862438771607
-Japan : 0.857204294175
+$ time python mk88.py "England" "word_vectors.dump" < word_dic.pkl
+England : 1.0
+France : 0.88950632473
+Australia : 0.883783587441
+Germany : 0.881372142281
+London : 0.873201747638
+India : 0.863680423084
+West : 0.861870126889
+home : 0.861744815153
+America : 0.859038989959
+Japan : 0.855082067514
 python mk88.py "England" < word_dic.pkl  0.92s user 1.92s system 63% cpu 4.472 total
 メモリ：300Mくらい？
 
-$ python mk88.py "leader" < word_dic.pkl
-leader: 1.0
-president : 0.878720376767
-governor : 0.874092724153
-partner : 0.866588689262
-manager : 0.862225230706
-director : 0.857197138855
-member : 0.849900427382
-head : 0.848236052945
-executive : 0.844734081569
-friend : 0.843136936634
+$ python mk88.py "leader" "word_vectors.dump" < word_dic.pkl
+leader : 1.0
+president : 0.876436996247
+governor : 0.874899102844
+partner : 0.866409267281
+manager : 0.860153406591
+director : 0.853685538917
+head : 0.850297840033
+member : 0.84988651277
+executive : 0.847549591563
+chief : 0.842613979285
 """
