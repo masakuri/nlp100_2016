@@ -71,3 +71,29 @@ Prince : 0.793249795106
 Richard : 0.792252611439
 """
 # うーん
+
+"""
+Egypt : 0.854164597123
+Spain : 0.851157174959
+Poland : 0.845474717474
+Greece : 0.840700558058
+Britain : 0.835651541179
+Hungary : 0.834935574771
+Iran : 0.832932783031
+Empire : 0.831729742483
+Turkey : 0.824682832914
+territory : 0.824372122845
+python mk89.py "Spain" "Madrid" "Athens" "word_vectors10.dump" < word_dic.pkl  2.47s user 1.66s system 90% cpu 4.564 total（martini01）
+
+King : 0.907485088296
+woman : 0.889627480233
+Prince : 0.888407006952
+king : 0.885732169892
+Princess : 0.882052644229
+Queen : 0.880585729926
+Elizabeth : 0.878119091327
+Henry : 0.877643309423
+sister : 0.876408515495
+Lady : 0.87596697646（martini01）
+"""
+# 1/10

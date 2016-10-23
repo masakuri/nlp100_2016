@@ -29,3 +29,9 @@ $ time python mk87.py "United States" "U.S." "word_vectors.dump" < word_dic.pkl
 python mk87.py "United States" "U.S." < word_dic.pkl  0.36s user 1.69s system 73% cpu 2.773 total
 メモリ：150Mくらい？
 """
+
+"""
+0.90886691125
+python mk87.py "United States" "U.S." "word_vectors10.dump" < word_dic.pkl  0.32s user 1.72s system 77% cpu 2.638 total（martini01）
+"""
+# 1/10

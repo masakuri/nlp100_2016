@@ -79,3 +79,11 @@ sensitivity     the     12.6215080698
 show    himself 0.37250394707
 ...
 """
+
+"""
+$ time zcat enwiki_wordfreq10.gz| python mk84.py | gzip > enwiki_wcarray10.txt.gz（martini01）
+zcat enwiki_wordfreq10.gz  21.02s user 1.44s system 18% cpu 2:02.18 total
+python mk84.py  432.07s user 13.84s system 97% cpu 7:35.68 total
+gzip > enwiki_wcarray10.txt.gz  6.34s user 0.21s system 1% cpu 7:35.68 total
+"""
+# 1/10

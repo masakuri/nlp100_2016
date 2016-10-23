@@ -26,3 +26,12 @@ $ time python mk86.py "United States" "word_vectors.dump" < word_dic.pkl
 python mk86.py "United States" < word_dic.pkl  0.68s user 1.83s system 67% cpu 3.726 total
 メモリ：600Mくらい？
 """
+
+"""
+[  2.11096797e+01   4.83857028e+00   1.17174274e+00   1.11480757e+00
+  -2.29408570e-01   1.87327293e+00  -1.43141500e+00  -5.96348974e-01
+  ...
+  -1.18529204e-02  -3.07250694e-05  -5.37823405e-02   2.36480057e-01]
+python mk86.py "United States" "word_vectors10.dump" < word_dic.pkl  0.47s user 2.78s system 8% cpu 39.749 total（martini01）
+"""
+# 1/10

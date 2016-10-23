@@ -25,10 +25,20 @@ for line in wiki_data:
     print line,
 
 """
-$ python mk81.py < enwiki.txt | gzip > enwiki_countryname.txt.gz
-(It took about 66s.) (local)
+$ time zcat enwiki.txt.gz| python mk81.py | gzip > enwiki_countryname.txt.gz
+zcat enwiki.txt.gz  0.76s user 0.05s system 0% cpu 1:28.80 total
+python mk81.py  84.91s user 0.39s system 95% cpu 1:28.92 total
+gzip > enwiki_countryname.txt.gz  6.46s user 0.10s system 7% cpu 1:28.92 total
 $ zcat enwiki_countryname.txt.gz | less
 ...
 ... Since the 1890s from France the term libertarianism has often been used as a synonym for anarchism and was used almost exclusively in this sense until the 1950s in the United_States its use as a synonym is still common outside the United_States On the other hand some use libertarianism to refer to individualistic free-market philosophy only referring to free-market anarchism as libertarian anarchismrchism
 ...
 """
+
+"""
+$ time zcat enwiki10.txt.gz| python mk81.py | gzip > enwiki_countryname10.txt.gz
+zcat enwiki10.txt.gz  7.53s user 0.39s system 0% cpu 14:50.29 total
+python mk81.py  848.22s user 2.86s system 95% cpu 14:50.40 total
+gzip > enwiki_countryname10.txt.gz  64.25s user 0.88s system 7% cpu 14:50.40 total
+"""
+# 1/10

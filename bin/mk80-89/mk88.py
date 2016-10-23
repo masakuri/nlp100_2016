@@ -57,3 +57,18 @@ member : 0.84988651277
 executive : 0.847549591563
 chief : 0.842613979285
 """
+
+"""
+England : 1.0
+London : 0.903649951843
+Wales : 0.900321350497
+France : 0.899035838267
+Denmark : 0.898326607565
+Scotland : 0.89584406382
+Germany : 0.895102464755
+Australia : 0.894946257174
+America : 0.89441312
+West : 0.893513346086
+python mk88.py "England" "word_vectors10.dump" < word_dic.pkl  2.46s user 1.64s system 97% cpu 4.210 total（martini01）
+"""
+# 1/10

@@ -11,6 +11,7 @@ N: 単語と文脈語のペアの総出現回数
 """
 from collections import defaultdict, Counter
 import sys
+from tqdm import tqdm
 
 data = sys.stdin
 f_tc = defaultdict(int)
@@ -18,7 +19,7 @@ f_t = defaultdict(int)
 f_c = defaultdict(int)
 N = 0
 
-for line in data:   # 各単語文脈語に対して
+for line in tqdm(data):   # 各単語文脈語に対して
     N += 1
     word_pair = line.strip("\n").split(" ") # [単語, 文脈語]
     word = word_pair[0]
@@ -77,3 +78,11 @@ woods 943
 *****N*****
 68005354
 """
+
+"""
+$ time zcat enwiki_context10.txt.gz| python mk83.py | gzip > enwiki_wordfreq10.gz（martini01）
+zcat enwiki_context10.txt.gz  58.84s user 5.71s system 4% cpu 25:39.03 total
+python mk83.py  1707.90s user 39.79s system 97% cpu 29:53.83 total
+gzip > enwiki_wordfreq10.gz  157.94s user 1.37s system 8% cpu 29:53.83 total
+"""
+# 1/10

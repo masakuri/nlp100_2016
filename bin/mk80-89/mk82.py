@@ -31,7 +31,9 @@ for i, line in enumerate(data): # コーパスの各行に対して
 
 """
 $ time zcat enwiki_countryname.txt.gz| python mk82.py| gzip > enwiki_context.txt.gz
-(it took about 145s. (local)
+zcat enwiki_countryname.txt.gz  0.77s user 0.04s system 0% cpu 2:30.18 total
+python mk82.py  142.29s user 0.79s system 95% cpu 2:30.41 total
+gzip > enwiki_context2.txt.gz  53.51s user 0.85s system 36% cpu 2:30.42 total
 $ zcat enwiki_context.txt.gz | less
 Anarchism is
 is Anarchism
@@ -44,3 +46,11 @@ a political
 a philosophy
 ...
 """
+
+"""
+$ time zcat enwiki_countryname10.txt.gz| python mk82.py| gzip > enwiki_context10.txt.gz
+zcat enwiki_countryname10.txt.gz  7.77s user 0.41s system 0% cpu 26:45.30 total
+python mk82.py  1467.21s user 10.46s system 92% cpu 26:45.48 total
+gzip > enwiki_context10.txt.gz  549.57s user 9.33s system 34% cpu 26:45.49 total
+"""
+# 1/10

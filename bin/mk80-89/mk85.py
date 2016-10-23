@@ -22,3 +22,8 @@ $ time python mk85.py wc_array.pkl
 python mk85.py wc_array.pkl  177.23s user 64.31s system 102% cpu 3:55.54 total
 メモリ：1.4Gくらい
 """
+
+"""
+python mk85.py wc_array.pkl  932.99s user 153.46s system 302% cpu 5:59.54 total（martini01）
+"""
+#1/10
