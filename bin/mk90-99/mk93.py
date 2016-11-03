@@ -27,7 +27,7 @@ print str(accracy) + " " + "({}/{})".format(int(true_count), int(true_count + fa
 $ python mk93.py < analogy85.txt
 0.0 (0/342)
 $ python mk93.py < analogy90.txt
-0.062656641604 (25/399)
+0.0625 (25/400)
 """
 
 """

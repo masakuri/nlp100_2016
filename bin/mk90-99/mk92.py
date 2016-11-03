@@ -38,7 +38,7 @@ def main():
                 word3 = words[2]
                 word4 = words[3]
 
-                try:    # 1/100でやるとgrandpaとかがなくてエラーはくのでそれは無視
+                if word_dic.has_key(word1) and word_dic.has_key(word2) and word_dic.has_key(word3):    # 1/100でやるとgrandpaとかがword_dicになくてエラーはくのでそれは無視
                     v1 = word_vectors[word_dic[word1]]
                     v2 = word_vectors[word_dic[word2]]
                     v3 = word_vectors[word_dic[word3]]
@@ -46,10 +46,10 @@ def main():
                     v = v2 - v1 + v3
                     # print v
                     w, cos_sim = cos_sim_max_word(v, word_dic, word_vectors)
-                    print "{} {} {} {} {} {}".format(word1, word2, word3, word4, w, cos_sim)
+                    print "{} {} {} {} {} {}".format(word1.encode("utf-8"), word2.encode("utf-8"), word3.encode("utf-8"), word4.encode("utf-8"), w.encode("utf-8"), cos_sim)
 
-                except:
-                    print "{} {} {} {}".format(word1, word2, word3, word4)
+                else:
+                    print "{} {} {} {}".format(word1.encode("utf-8"), word2.encode("utf-8"), word3.encode("utf-8"), word4.encode("utf-8"))
                     continue
 
 if __name__ == '__main__':
@@ -64,6 +64,7 @@ boy girl brothers sisters brothers 0.82450440473
 boy girl dad mom girl 0.72481973228
 boy girl father mother father 0.876267723232
 boy girl grandfather grandmother grandfather 0.767704640815
+boy girl grandpa grandma
 ...
 
 $ time python mk92.py "../mk80-89/word_vectors.dump" < ../mk80-89/word_dic.pkl > analogy85.txt
@@ -74,14 +75,15 @@ boy girl brothers sisters brothers 0.886286842265
 boy girl dad mom dad 0.773029551655
 boy girl father mother father 0.848115211511
 boy girl grandfather grandmother grandfather 0.856013372233
+boy girl grandpa grandma
 ...
 """
 
 """
-$ time python mk92.py "../mk80-89/word_vectors.dump" < ../mk80-89/word_dic.pkl > analogy85_10.txt
-python mk92.py "../mk80-89/word_vectors.dump" < ../mk80-89/word_dic.pkl >   875.20s user 4.04s system 95% cpu 15:17.95 total
+$ time python mk92.py "../mk80-89/word_vectors10.dump" < ../mk80-89/word_dic10.pkl > analogy85_10.txt
+python mk92.py "../mk80-89/word_vectors.dump" < ../mk80-89/word_dic.pkl >   875.20s user 4.04s system 95% cpu 15:17.95 total(martini01)
 
 $ time python mk92.py "word_vectors10.dump" < word_dic10.pkl > analogy90_10.txt
-python mk92.py "word_vectors10.dump" < word_dic10.pkl > analogy90_10.txt  2818.25s user 1.77s system 99% cpu 47:05.40 total
+python mk92.py "word_vectors10.dump" < word_dic10.pkl > analogy90_10.txt  2818.25s user 1.77s system 99% cpu 47:05.40 total(martini01)
 """
 # 1/10
